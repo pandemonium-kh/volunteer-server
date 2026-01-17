@@ -14,5 +14,9 @@ router
   res.render("home");
 });
 
+router
+    .get("/guide", (req, res) => {
+      res.render("volunteerGuide");
+    });
 
 module.exports = router;

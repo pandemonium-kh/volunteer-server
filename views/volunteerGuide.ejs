@@ -1,0 +1,164 @@
+<%- include('./include/_header') %>
+
+<style>
+  .page-wrap { max-width: 1100px; margin: 0 auto; padding: 28px 18px 70px; }
+  .title { font-size: 32px; font-weight: 900; letter-spacing: -0.6px; margin: 14px 0 10px; }
+  .sub { color: #666; line-height: 1.7; margin: 0 0 22px; }
+
+  .toc { display: flex; gap: 10px; flex-wrap: wrap; margin: 12px 0 22px; }
+  .chip {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 10px 12px; border-radius: 999px;
+    border: 1px solid #e3e3e3; background: #fff;
+    text-decoration: none; color: #222; font-weight: 800;
+  }
+  .chip:hover { border-color: #cfd7ff; }
+
+  .grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
+  @media (min-width: 900px) { .grid { grid-template-columns: 1fr 1fr; gap: 18px; } }
+
+  .card {
+    border: 1px solid #e9e9e9; border-radius: 14px;
+    background: #fff; padding: 18px;
+  }
+  .card h2 { margin: 0 0 10px; font-size: 20px; }
+  .card p { margin: 0; color: #555; line-height: 1.75; }
+  .meta { margin-top: 12px; padding-top: 12px; border-top: 1px dashed #e0e0e0; }
+  .meta ul { margin: 8px 0 0; padding-left: 18px; color: #444; line-height: 1.85; }
+
+  .badge {
+    display: inline-block; margin-left: 8px;
+    font-size: 12px; font-weight: 800;
+    padding: 4px 8px; border-radius: 999px;
+    background: #f3f6ff; color: #2b4cff; border: 1px solid #dbe4ff;
+  }
+
+  .divider { height: 1px; background: #eee; margin: 26px 0; }
+
+  .cta {
+    display:flex; align-items:center; justify-content:space-between; gap: 12px;
+    margin-top: 22px; padding: 16px;
+    border-radius: 14px; border: 1px solid #e9e9e9;
+    background: linear-gradient(180deg, #ffffff, #fbfbff);
+  }
+  .cta p { margin: 0; color: #444; line-height: 1.7; }
+  .btns { display:flex; gap: 10px; flex-wrap: wrap; }
+  .btn {
+    display:inline-block; padding: 10px 14px;
+    border-radius: 10px; border: 1px solid #d9d9d9;
+    background: #fff; color: #222; text-decoration: none; font-weight: 800;
+  }
+  .btn.primary { background: #2b4cff; border-color: #2b4cff; color: #fff; }
+
+  /* 스크롤 이동 시 헤더에 가려지는 것 방지 */
+  section.team { scroll-margin-top: 90px; }
+</style>
+
+<main class="page-wrap">
+  <h1 class="title">봉사팀 안내</h1>
+  <p class="sub">
+    아리 봉사단은 팀별로 다양한 활동을 진행합니다. 아래에서 각 팀의 활동 목적과 대표 활동을 확인해보세요.
+  </p>
+
+  <!-- 상단 빠른 이동 -->
+  <nav class="toc" aria-label="팀 바로가기">
+    <a class="chip" href="#kids">아동팀</a>
+    <a class="chip" href="#elderly">노인팀</a>
+    <a class="chip" href="#env">환경팀</a>
+    <a class="chip" href="#disabled">장애팀</a>
+  </nav>
+
+  <div class="divider"></div>
+
+  <div class="grid">
+    <!-- 아동팀 -->
+    <section class="card team" id="kids">
+      <h2>아동팀 <span class="badge">Kids</span></h2>
+      <p>
+        아동의 정서적 안정과 즐거운 학습 경험을 돕는 팀입니다.
+        놀이·학습·창작 활동을 통해 아이들이 자신감을 키울 수 있도록 지원합니다.
+      </p>
+
+      <div class="meta">
+        <strong>대표 활동</strong>
+        <ul>
+          <li>아동센터 촉감/미술/제작 활동 진행</li>
+          <li></li>
+          <li></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 노인팀 -->
+    <section class="card team" id="elderly">
+      <h2>노인팀 <span class="badge">Elderly</span></h2>
+      <p>
+        어르신들의 정서적 교류와 일상 지원을 목표로 합니다.
+        말벗, 프로그램 보조, 생활 지원 등 사람 중심의 활동을 진행합니다
+      </p>
+
+      <div class="meta">
+        <strong>대표 활동</strong>
+        <ul>
+          <li>복지관/요양시설 프로그램 보조</li>
+          <li>인지 활동(간단한 만들기/게임/회상 활동) 지원</li>
+          <li></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 환경팀 -->
+    <section class="card team" id="env">
+      <h2>환경팀 <span class="badge">Environment</span></h2>
+      <p>
+        지역 환경 개선과 지속가능한 생활 습관 확산을 위한 팀입니다.
+      </p>
+
+      <div class="meta">
+        <strong>대표 활동</strong>
+        <ul>
+          <li>지역 환경정화(플로깅, 쓰레기 수거)</li>
+          <li>분리수거/캠페인 운영(부스, 안내)</li>
+          <li></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 장애팀 -->
+    <section class="card team" id="disabled">
+      <h2>장애팀 <span class="badge">Support</span></h2>
+      <p>
+        장애인(아동/청소년/성인)의 활동 참여를 돕고, 접근성을 높이는 팀입니다.
+        보조 역할이 핵심이며 안전수칙과 배려가 중요합니다.
+      </p>
+
+      <div class="meta">
+        <strong>대표 활동</strong>
+        <ul>
+          <li>체육/미술/문화 프로그램 참여 보조</li>
+          <li>초등학생 방과후 교실 프로그램 보조</li>
+          <li>행사 운영 지원 및 안전 관리</li>
+        </ul>
+      </div>
+    </section>
+  </div>
+
+  <section class="cta">
+    <p>
+      팀 소개를 확인하셨다면, 봉사 프로그램을 둘러보고 신청해보세요.<br/>
+      <span style="color:#666;">(신청/내 정보 기능은 로그인 후 이용 가능)</span>
+    </p>
+
+    <div class="btns">
+      <% if (isLoggedIn) { %>
+        <a class="btn primary" href="/volunteer">봉사 참여 보러가기</a>
+        <a class="btn" href="/my">내 신청/활동 보기</a>
+      <% } else { %>
+        <a class="btn primary" href="/login">로그인</a>
+        <a class="btn" href="/register">회원가입</a>
+      <% } %>
+    </div>
+  </section>
+</main>
+
+<%- include('./include/_footer') %>

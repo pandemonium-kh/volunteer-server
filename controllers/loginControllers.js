@@ -40,16 +40,24 @@ const loginUser = asyncHandler(async(req, res) => {
     if (!isMatch) { // 비밀번호 틀림
         return res.redirect("/login?error=password");
     }
-    const token = jwt.sign({ id: user._id, username: user.username }, jwtSecret);
-    res.cookie("token", token, { httpOnly: true });
+    const token = jwt.sign(
+        { id: user._id, username: user.username },
+        jwtSecret,
+        { expiresIn: "1h" } // ⬅ JWT 만료
+    );
+
+    res.cookie("token", token, {
+        httpOnly: true,
+        maxAge: 60 * 60 * 1000,
+    });
     res.redirect("/home");
-})
+});
 
 // 로그아웃
 // @route GET /logout
 const logout = (req, res) => {
-    res.clearCookie("token");
-    res.redirect("/login");
-}
+    res.clearCookie("token", { httpOnly: true });
+    res.redirect("/home");
+};
 
 module.exports = { getRegister, registerUser, getLogin, loginUser, logout };
