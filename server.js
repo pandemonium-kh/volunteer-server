@@ -1,5 +1,6 @@
 require("dotenv").config();
 const express = require("express");
+const methodOverride = require("method-override");
 const cors = require("cors");
 const mongoose = require("mongoose");
 
@@ -9,31 +10,21 @@ mongoose.connect(process.env.MONGO_URI)
 
 const app = express();
 
+app.set("view engine", "ejs");
+app.set("views", "./views");
+
 app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+app.use("/", require("./routes/loginRoutes"));
+app.use("/home", require("./routes/homeRoutes"));
 
 app.get("/", (req, res) => {
-    res.send("Server is running!");
+    res.render("login");
 })
 
-const Participation = require("./models/Participation");
-
-// 기록 추가
-app.post("/api/participations", async (req, res) => {
-    try {
-        const { name, date, hours } = req.body;
-        const created = await Participation.create({ name, date, hours });
-        res.status(201).json(created);
-    } catch (error) {
-        res.status(400).json({ message: e.message });
-    }
-});
-
-// 전체 조회
-app.get("/api/participations", async (req, res) => {
-    const list = await Participation.find().sort({ createdAt: -1 });
-    res.json(list);
-});
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server listening on ${PORT}`));
+app.listen(PORT, () =>
+    console.log(`Server listening on ${PORT}`));
